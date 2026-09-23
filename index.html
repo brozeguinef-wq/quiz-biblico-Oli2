@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -142,6 +143,20 @@
             <!-- Book Selection Cards -->
             <div class="w-full space-y-4 pt-2">
 
+                <!-- Book 0: Gênesis -->
+                <button onclick="startQuiz('genesis')" class="btn-press w-full bg-gradient-to-r from-purple-400 to-indigo-500 hover:from-purple-500 hover:to-indigo-600 text-white rounded-3xl p-5 shadow-lg border-b-4 border-indigo-700 flex items-center justify-between text-left group">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-4xl sm:text-5xl group-hover:scale-110 transition-transform">🌍</span>
+                        <div>
+                            <h3 class="text-2xl font-bold">Gênesis</h3>
+                            <p class="text-xs sm:text-sm text-indigo-100 font-semibold">O começo de todas as coisas</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/20 rounded-full p-2 text-white">
+                        <i class="fas fa-chevron-right text-xl"></i>
+                    </div>
+                </button>
+
                 <!-- Book 1: Números -->
                 <button onclick="startQuiz('numeros')" class="btn-press w-full bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 text-white rounded-3xl p-5 shadow-lg border-b-4 border-emerald-700 flex items-center justify-between text-left group">
                     <div class="flex items-center space-x-4">
@@ -282,7 +297,7 @@
                         <span>⭐</span>
                         <span id="finalStarsText">10</span>
                         <span>de</span>
-                        <span>10 Estrelas!</span>
+                        <span id="totalQuestionsText">10 Estrelas!</span>
                     </div>
                     <p id="badgeName" class="text-xs sm:text-sm font-bold text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full mt-2">
                         Medalha: Explorador da Bíblia 🏅
@@ -398,11 +413,167 @@
     <script>
         /* 
            =========================================
-           BIBLICAL DATASET (30 QUESTIONS)
-           10 Números, 10 Deuteronômio, 10 Josué
+           BIBLICAL DATASET (45 QUESTIONS)
+           15 Gênesis, 10 Números, 10 Deuteronômio, 10 Josué
            =========================================
         */
         const quizData = {
+            genesis: {
+                title: "Gênesis",
+                badge: "Criador do Mundo 🌍",
+                questions: [
+                    {
+                        question: "Quem criou os céus, a Terra, as estrelas e os animais no começo de tudo?",
+                        options: [
+                            { text: "Deus, nosso Criador!", correct: true },
+                            { text: "Um robô gigante", correct: false },
+                            { text: "Os reis do passado", correct: false },
+                            { text: "Aconteceu por acaso", correct: false }
+                        ],
+                        explanation: "No princípio, Deus criou o mundo com muito amor e carinho para nós!"
+                    },
+                    {
+                        question: "Qual foi a primeira coisa que Deus disse para existir na criação?",
+                        options: [
+                            { text: "'Haja luz!' e a luz surgiu", correct: true },
+                            { text: "'Haja sorvete!'", correct: false },
+                            { text: "'Haja carros!'", correct: false },
+                            { text: "'Haja chuva!'", correct: false }
+                        ],
+                        explanation: "Deus disse 'Haja luz!' e tudo ficou iluminado e muito bonito!"
+                    },
+                    {
+                        question: "Quais foram os dois primeiros seres humanos criados por Deus?",
+                        options: [
+                            { text: "Adão e Eva", correct: true },
+                            { text: "Pedro e Maria", correct: false },
+                            { text: "David e Ana", correct: false },
+                            { text: "Moisés e Sara", correct: false }
+                        ],
+                        explanation: "Deus criou Adão e Eva para cuidarem do lindo Jardim do Éden!"
+                    },
+                    {
+                        question: "Onde Adão e Eva moravam quando o mundo era todinho perfeito?",
+                        options: [
+                            { text: "No Jardim do Éden", correct: true },
+                            { text: "Em um castelo de pedra", correct: false },
+                            { text: "Em um barco no mar", correct: false },
+                            { text: "Em uma ilha de gelo", correct: false }
+                        ],
+                        explanation: "O Jardim do Éden era um lugar lindo, cheio de árvores, flores e animais amigáveis!"
+                    },
+                    {
+                        question: "Quem construiu uma grande arca de madeira para salvar os animais do dilúvio?",
+                        options: [
+                            { text: "Noé", correct: true },
+                            { text: "Abraão", correct: false },
+                            { text: "José", correct: false },
+                            { text: "Sansão", correct: false }
+                        ],
+                        explanation: "Noé obedeceu a Deus e construiu uma grande arca para proteger sua família e o casal de cada animal!"
+                    },
+                    {
+                        question: "O que Deus colocou no céu como promessa de que nunca mais haveria outro dilúvio?",
+                        options: [
+                            { text: "Um lindo arco-íris colorido", correct: true },
+                            { text: "Uma estrela gigante", correct: false },
+                            { text: "Uma nuvem em forma de coração", correct: false },
+                            { text: "Um avião dourado", correct: false }
+                        ],
+                        explanation: "O arco-íris é um sinal do amor e da promessa de Deus para sempre!"
+                    },
+                    {
+                        question: "Qual era a promessa que Deus fez a Abraão sobre a sua família?",
+                        options: [
+                            { text: "Que seria numerosa como as estrelas do céu!", correct: true },
+                            { text: "Que teriam um castelo de ouro", correct: false },
+                            { text: "Que seriam super-heróis", correct: false },
+                            { text: "Que morariam na lua", correct: false }
+                        ],
+                        explanation: "Deus disse que a família de Abraão seria tão grande como as estrelinhas que brilham no céu!"
+                    },
+                    {
+                        question: "Qual era o nome do filho da promessa que nasceu para Abraão e Sara quando eles já eram idosos?",
+                        options: [
+                            { text: "Isaque", correct: true },
+                            { text: "Jacó", correct: false },
+                            { text: "Samuel", correct: false },
+                            { text: "Davi", correct: false }
+                        ],
+                        explanation: "Isaque foi o presente de Deus para Abraão e Sara! Seu nome significa 'riso e alegria'!"
+                    },
+                    {
+                        question: "Jacó teve 12 filhos. Qual deles ganhou um casaco de muitas cores bem especial do pai?",
+                        options: [
+                            { text: "José", correct: true },
+                            { text: "Judá", correct: false },
+                            { text: "Benjamin", correct: false },
+                            { text: "Rúben", correct: false }
+                        ],
+                        explanation: "Jacó amava muito a José e deu a ele uma túnica linda e colorida!"
+                    },
+                    {
+                        question: "Deus deu a José um presente muito especial. O que ele conseguia entender?",
+                        options: [
+                            { text: "Entender e explicar o significado dos sonhos!", correct: true },
+                            { text: "Falar com os pássaros", correct: false },
+                            { text: "Ficar invisível", correct: false },
+                            { text: "Respirar debaixo de água", correct: false }
+                        ],
+                        explanation: "Deus ajudava José a entender os sonhos e a salvar muitas pessoas da fome!"
+                    },
+                    {
+                        question: "Para qual país distante José foi levado antes de se tornar um grande governante?",
+                        options: [
+                            { text: "Egito", correct: true },
+                            { text: "Roma", correct: false },
+                            { text: "Brasil", correct: false },
+                            { text: "Grécia", correct: false }
+                        ],
+                        explanation: "No Egito, Deus cuidou de José e fez dele um governador sábio e muito bom!"
+                    },
+                    {
+                        question: "Quando os irmãos de José foram ao Egito buscar comida, o que José fez?",
+                        options: [
+                            { text: "Perdoou todos eles com muito amor!", correct: true },
+                            { text: "Ficou muito zangado e não ajudou", correct: false },
+                            { text: "Mandou-os embora", correct: false },
+                            { text: "Escondeu a comida", correct: false }
+                        ],
+                        explanation: "José tinha o coração cheio de amor e perdoou os seus irmãos, cuidando de toda a sua família!"
+                    },
+                    {
+                        question: "Como se chamavam os dois filhos gémeos de Isaque e Rebeca?",
+                        options: [
+                            { text: "Esaú e Jacó", correct: true },
+                            { text: "Pedro e Paulo", correct: false },
+                            { text: "Caim e Abel", correct: false },
+                            { text: "Moisés e Arão", correct: false }
+                        ],
+                        explanation: "Esaú gostava de caçar no campo e Jacó preferia ficar calmo perto das tendas!"
+                    },
+                    {
+                        question: "O que Caim e Abel ofereceram a Deus?",
+                        options: [
+                            { text: "Ofertas com o melhor que eles tinham", correct: true },
+                            { text: "Brinquedos de madeira", correct: false },
+                            { text: "Pedras coloridas", correct: false },
+                            { text: "Doces e bolos", correct: false }
+                        ],
+                        explanation: "Abel deu o melhor das suas ovelhinhas com todo o carinho e fé para Deus!"
+                    },
+                    {
+                        question: "Em quantos dias Deus criou todo o mundo e depois descansou?",
+                        options: [
+                            { text: "Criou em 6 dias e descansou no 7º dia!", correct: true },
+                            { text: "Criou em 100 dias", correct: false },
+                            { text: "Criou em 1 dia só", correct: false },
+                            { text: "Criou em 1 ano", correct: false }
+                        ],
+                        explanation: "Deus fez tudo em 6 dias maravilhosos e abençoou o 7º dia para descansar!"
+                    }
+                ]
+            },
             numeros: {
                 title: "Números",
                 badge: "Explorador do Deserto 🏕️",
@@ -988,12 +1159,13 @@
 
             document.getElementById('completionSubtitle').innerText = `Parabéns, Oli! Você terminou o livro de ${book.title}!`;
             document.getElementById('finalStarsText').innerText = roundStars;
+            document.getElementById('totalQuestionsText').innerText = `${total} Estrelas!`;
             document.getElementById('badgeName').innerText = `Medalha: ${book.badge}`;
 
             const enc = document.getElementById('finalEncouragement');
             if (roundStars === total) {
                 enc.innerText = "Nossa! Você acertou TUDO! Papai do Céu está muito feliz com sua dedicação! 🌟🎉";
-            } else if (roundStars >= 7) {
+            } else if (roundStars >= Math.floor(total * 0.7)) {
                 enc.innerText = "Que incrível, Oli! Você conhece muito bem a Bíblia! Parabéns! 🎈⭐";
             } else {
                 enc.innerText = "Você foi super corajoso! Vamos jogar de novo para aprender ainda mais? 📖❤️";
@@ -1099,7 +1271,7 @@
         function copyReadmeText() {
             const readmeText = `# 📖 Quiz Bíblico do Oli
 
-Um aplicativo interativo de Quiz Bíblico feito especialmente para o **Oli** (5 anos), cobrindo os livros de **Números**, **Deuteronômio** e **Josué**.
+Um aplicativo interativo de Quiz Bíblico feito especialmente para o **Oli** (5 anos), cobrindo os livros de **Gênesis**, **Números**, **Deuteronômio** e **Josué**.
 
 ## 🚀 Como Publicar Gratuitamente no GitHub Pages
 
